@@ -4,55 +4,47 @@
 
 ## Introduction
 
-The Favorite Color Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier Angular-Node-Spring-MongoDB application, designed to demonstrate Packer and Terraform with AWS. The Favorite BFF is a simple Node proxy service, built on [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy). The Favorite Color BFF proxies API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Service](https://github.com/garystafford/fav-color-service) Spring Boot RESTful microservice. The entire application is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform.
+The Favorite Color Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)) component, is part of a multi-tier Angular-Node-Spring-MongoDB application. The BFF component is a simple Node proxy service, built on [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy). As a proxy, the BFF component merely simulates a true BFF, and contains no actual business logic. The BFF component proxies API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color](https://github.com/garystafford/fav-color-service) Spring Boot RESTful microservice.
 
+The entire application is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind load balancers, while the service(s) and database(s) would sit in the private subnet, also behind a load balancer.
 
-## Quick Start
+## Quick Start for Local Development
 
-The Favorite Color BFF requires that the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) and the [Favorite Color Service](https://github.com/garystafford/fav-color-service) are both running, first, locally, on `http://localhost:8091`. It also required MongoDB is running.
-
-Once MongoDB and the Favorite Color Service running separately, to clone, build, test, and run the Favorite Color Web Application, locally:
+Once MongoDB and the Favorite Color Web Application and Favorite Color Service, are all up and running locally, clone, build, test, and run the Favorite Color Web Application, using the following commands:
 
 ```bash
-git clone https://github.com/garystafford/fav-color-ngweb.git
-cd fav-color-ngweb
-npm install -g bower gulp-cli
+git clone https://github.com/garystafford/fav-color-bff.git
+cd fav-color-bff
 npm install
-bower install
 npm start
 ```
 
-The application should start successfully on `http://localhost:3000`, and attempt to open it in your default web browser.
-
-## Results
-
-![Web UI](WebUI.png)
+The Favorite Color BFF component should start successfully on `http://localhost:8081`, and be ready to take calls from the web application and proxy them to the service.
 
 ## Environment Configuration
 
-Informational only, the project uses [gulp-ng-config](https://github.com/ajwhite/gulp-ng-config) `options.environment` [option](https://github.com/ajwhite/gulp-ng-config#optionsenvironment) for specifying environment specific configuration. The master configuration, `configFile.json`, is located in the root of the project.
+Informational only, the project uses the [config](https://www.npmjs.com/package/config) NPM package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development.
 
-**Local**<br>
-If you modify the master configuration, `configFile.json`, to recreate local development environment configuration file (`local`):
-
-```bash
-gulp client.config
+```json
+{
+  "port": "8081",
+  "api": {
+    "description": "Call the service directly in a local development environment",
+    "url": "http://localhost",
+    "port": "8091"
+  }
+}
 ```
 
-This will create the `configFile.js` in the `client/dev` directory.
-
-**Production**<br>
-If you modify the master configuration, `configFile.json`, to recreate the AWS Production configuration file (`production`):
+All configuration can be overridden using environment variables, exported in advance, or on the command-line, when the application is started. For example:
 
 ```bash
-gulp client.config:dist
+PORT=1234 API_PRT=5678 node app.js
 ```
-
-This will create the `configFile.js` in the `client/dist` directory.
 
 ## Build Production Distribution
 
-To create the `dist` directory for deployment to Production, use one Gulp command: `client.build:dist`. This command aggregates several other commands together.
+The BFF component uses [Gulp](http://gulpjs.com/) for workflow automation. To create the `dist` directory, in the project's root directory, for deployment to Production, use one Gulp command, `client.build:dist`. This command aggregates several other commands together to build a deployable build artifact.
 
 ```bash
 gulp client.build:dist
@@ -60,11 +52,9 @@ gulp client.build:dist
 
 ## Run with Node in Production
 
-To run the application using Node, instead of Apache, after deploying the `dist` directory, run the following commands, from within the `dist` directory. Environment variable, `PORT` is fully configurable. Note the values in the `configFile.js` will need to be modified for your use. They is specific to my AWS Production environment.
+To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory. Environment variable, `PORT` is fully configurable. Note the values in the `configFile.js` will need to be modified for your use. They is specific to my AWS Production environment.
 
 ```bash
-npm install -g bower gulp-cli
 NODE_ENV=production npm install
-bower install --production --config.directory=bower_components
-PORT=3004 node server.js
+node app.js
 ```

@@ -3,12 +3,12 @@
 var http = require('http');
 var httpProxy = require('http-proxy');
 var config = require('config');
-var port = config.get('port') || 8081;
+var port = process.env.PORT || config.get('port');
 var proxy = httpProxy.createProxyServer({});
 
-proxy.on('proxyReq', function (proxyReq, req, res, options) {
-  proxyReq.setHeader('X-Special-Proxy-Header', 'foobar');
-});
+// proxy.on('proxyReq', function (proxyReq, req, res, options) {
+//   proxyReq.setHeader('X-Special-Proxy-Header', 'foobar');
+// });
 
 var server = http.createServer(function (req, res) {
 
@@ -16,8 +16,8 @@ var server = http.createServer(function (req, res) {
 
   proxy.web(req, res, {
     target: {
-      host: config.get('api.url') || 'localhost',
-      port: config.get('api.port') || 81
+      host: process.env.API_URL || config.get('api.url'),
+      port: process.env.API_PORT || config.get('api.port')
     }
   });
 });
