@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/garystafford/fav-color-ngweb.svg?branch=master)](https://travis-ci.org/garystafford/fav-color-ngweb)
-
 # Favorite Color Backend For Frontend (BFF)
 
 ## Introduction
@@ -44,10 +42,10 @@ PORT=1234 API_PRT=5678 node app.js
 
 ## Build Production Distribution
 
-The BFF component uses [Gulp](http://gulpjs.com/) for workflow automation. To create the `dist` directory, in the project's root directory, for deployment to Production, use one Gulp command, `client.build:dist`. This command aggregates several other commands together to build a deployable build artifact.
+The BFF component uses [Gulp](http://gulpjs.com/), with [Babel](https://www.npmjs.com/package/gulp-babel), for workflow automation. To create the `dist` directory, in the project's root directory, for deployment to Production, use one Gulp command, `gulp dist`. This command aggregates several other commands together to build a deployable build artifact.
 
 ```bash
-gulp client.build:dist
+gulp dist
 ```
 
 ## Run with Node in Production
