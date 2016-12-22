@@ -21,7 +21,7 @@ npm start
 
 The Favorite Color BFF component should start successfully on the default host/port combination of `http://localhost:8081`, and be ready to take calls from the web application and proxy them to the service.
 
-## Environment Configuration
+## Configuration Management
 
 Informational only, the project uses the [config](https://www.npmjs.com/package/config) npm package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development.
 
@@ -52,11 +52,21 @@ The BFF component uses [Gulp](http://gulpjs.com/), with [Babel](https://www.npmj
 gulp dist
 ```
 
-## Run with Node in Production
+## Run in Production
 
-To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory. In addition to indicating that only npm `dependencies` should be installed, not `devDependencies`, using `NODE_ENV=production` specifies that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
+To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory.
+
+Using `NODE_ENV=production` means that only required npm packages in the `dependencies` section of the `package.json` will be installed, not npm packages in the `devDependencies` section.
+
+In addition, setting `NODE_ENV=production` means that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
 
 ```bash
 NODE_ENV=production npm install
 node app.js
 ```
+
+## Reference
+
+- [Splitting a gulpfile into multiple files](http://macr.ae/article/splitting-gulpfile-multiple-files.html)
+- [Pattern: Backends For Frontends](http://samnewman.io/patterns/architectural/bff/)
+- [BFF @ SoundCloud](https://www.thoughtworks.com/insights/blog/bff-soundcloud)
