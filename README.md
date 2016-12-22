@@ -2,15 +2,15 @@
 
 ## Introduction
 
-The Favorite Color Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)) component, is part of a multi-tier Angular-Node-Spring-MongoDB application. The BFF component is a simple Node proxy service, built on [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy). As a proxy, the BFF component merely simulates a true BFF, and contains no actual business logic.
+The Favorite Color Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)) component, is part of a multi-tier Angular-Node-Spring-MongoDB application. The Favorite Color BFF component is a basic Node-based stand-alone proxy server, built on [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy). As a proxy, the BFF component merely simulates a true BFF, and contains no actual business logic.
 
-The BFF component proxies API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color](https://github.com/garystafford/fav-color-service) Spring Boot RESTful microservice. For example, a call to the `/choices` endpoint at `http://bff.favcolor.com:8081/choices`, from the web application, will be proxied through the BFF, to the private backend service endpoint `/choices` at `http://api.favcolor.com:8091/choices`.
+The BFF component proxies API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Service](https://github.com/garystafford/fav-color-service), a Spring Boot RESTful microservice. For example, a call to the `/choices` endpoint at `http://bff.favcolor.com:8081/choices`, from the web application, will be proxied through the BFF, to the private backend service endpoint `/choices` at `http://api.favcolor.com:8091/choices`.
 
 The entire application is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind load balancers, while the service(s) and database(s) would sit in the private subnet, also behind a load balancer.
 
 ## Quick Start for Local Development
 
-Once MongoDB and the Favorite Color Web Application and Favorite Color Service, are all up and running locally, clone, build, test, and run the Favorite Color Web Application, using the following commands:
+Once MongoDB and the Favorite Color Web Application and Service are all up and running locally, clone, build, test, and run the Favorite Color Web Application, using the following commands:
 
 ```bash
 git clone https://github.com/garystafford/fav-color-bff.git
@@ -19,7 +19,7 @@ npm install
 npm start
 ```
 
-The Favorite Color BFF component should start successfully on `http://localhost:8081`, and be ready to take calls from the web application and proxy them to the service.
+The Favorite Color BFF component should start successfully on the default host/port combination of `http://localhost:8081`, and be ready to take calls from the web application and proxy them to the service.
 
 ## Environment Configuration
 
