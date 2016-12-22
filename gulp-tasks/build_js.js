@@ -7,7 +7,7 @@ const JS = [
   '!' + path.DIST + 'node_modules/**/*'
 ];
 
-gulp.task(tasks.CLIENT_BUILD_JS_DIST, () => {
+gulp.task(tasks.BUILD_JS_DIST, () => {
   return gulp.src(JS, {base: path.DIST})
              .pipe(uglify())
              .pipe(gulp.dest(path.DIST));

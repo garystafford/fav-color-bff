@@ -5,7 +5,7 @@ const PACKAGES = [
   path.ROOT + 'package.json'
 ];
 
-gulp.task(tasks.CLIENT_BUILD_PACKAGES_DIST, () => {
+gulp.task(tasks.BUILD_PACKAGES_DIST, () => {
   return gulp.src(PACKAGES, {base: path.ROOT})
     .pipe(gulp.dest(path.DIST));
 });
