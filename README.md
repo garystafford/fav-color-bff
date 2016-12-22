@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/garystafford/fav-color-bff.svg?branch=master)](https://travis-ci.org/garystafford/fav-color-bff)
+
 # Favorite Color Backend For Frontend (BFF)
 
 ## Introduction
