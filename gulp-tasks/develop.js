@@ -1,14 +1,14 @@
 import gulp from 'gulp';
 import nodemon from 'gulp-nodemon';
-import plumber from 'gulp-plumber';
-import livereload from 'gulp-livereload';
 import {path, tasks} from './const';
 
 gulp.task(tasks.DEVELOP, () => {
-  livereload.listen();
   nodemon({
     script: 'app.js',
-    stdout: false
+    ext: 'js html',
+    env: {
+      'NODE_ENV': 'development'
+    }
   }).on('readable', function() {
     this.stdout.on('data', function(chunk) {
       if (/^Server listening on port/.test(chunk)) {

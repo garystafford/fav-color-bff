@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import plumber from 'gulp-plumber';
 import del from 'del';
 import {path, tasks} from './const';
 
