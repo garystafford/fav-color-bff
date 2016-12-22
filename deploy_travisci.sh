@@ -6,7 +6,7 @@
 # travis encrypt COMMIT_AUTHOR_EMAIL=<your_email_here> --add
 # export GH_COLOR_ARTIFACT_REPO=github.com/<your_repo_path>.git
 
-#set -x
+set -x
 
 zip -r dist-bff-0.1.${TRAVIS_BUILD_NUMBER}.zip dist/
 
