@@ -23,7 +23,7 @@ The Favorite Color BFF component should start successfully on the default host/p
 
 ## Environment Configuration
 
-Informational only, the project uses the [config](https://www.npmjs.com/package/config) NPM package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development.
+Informational only, the project uses the [config](https://www.npmjs.com/package/config) npm package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development. Setting the `NODE_ENV` environment variables, either by exporting it in advance, or on the command-line when the application is started, dictates which config file is used. For example, using `NODE_ENV=production` specifies that the `production.json` will be used to source environment specific configuration.
 
 ```json
 {
@@ -36,7 +36,7 @@ Informational only, the project uses the [config](https://www.npmjs.com/package/
 }
 ```
 
-All configuration can be overridden using environment variables, exported in advance, or on the command-line, when the application is started. For example:
+All configuration can be overridden using environment variables, exported in advance, or on the command-line when the application is started. For example:
 
 ```bash
 PORT=1234 API_PRT=5678 node app.js
@@ -52,7 +52,7 @@ gulp dist
 
 ## Run with Node in Production
 
-To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory. Environment variable, `PORT` is fully configurable. Note the values in the `configFile.js` will need to be modified for your use. They is specific to my AWS Production environment.
+To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory. In addition to indicating that only npm `dependencies` should be installed, not `devDependencies`, using `NODE_ENV=production` specifies that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
 
 ```bash
 NODE_ENV=production npm install
