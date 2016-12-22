@@ -56,16 +56,18 @@ gulp dist
 
 ## Run in Production
 
-To run the BFF component using Node, in Production, after deploying after deploying the contents of the `dist` directory, run the following commands from within the `dist` directory.
-
-Using `NODE_ENV=production` means that only required npm packages in the `dependencies` section of the `package.json` will be installed, not npm packages in the `devDependencies` section.
-
-In addition, setting `NODE_ENV=production` means that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
+After deploying the contents of the `dist` directory, run the following commands from within the `dist` directory.
 
 ```bash
 NODE_ENV=production npm install
 node app.js
 ```
+
+Using `NODE_ENV=production` means that only required npm packages in the `dependencies` section of the `package.json` will be installed, not npm packages in the `devDependencies` section.
+
+In addition, setting `NODE_ENV=production` means that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
+
+Remember, you can override the configuration using environment variables on the command-line, as shown above.
 
 ## Reference
 
