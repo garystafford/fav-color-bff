@@ -23,7 +23,7 @@ The Favorite Color BFF component should start successfully on the default host/p
 
 ## Environment Configuration
 
-Informational only, the project uses the [config](https://www.npmjs.com/package/config) npm package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development. Setting the `NODE_ENV` environment variables, either by exporting it in advance, or on the command-line when the application is started, dictates which config file is used. For example, using `NODE_ENV=production` specifies that the `production.json` will be used to source environment specific configuration.
+Informational only, the project uses the [config](https://www.npmjs.com/package/config) npm package for specifying environment specific configuration. Each environment is represented by a separate JSON configuration file, in the `config` directory, located in the root of the project. There is also a default `default.json`, intended for local development.
 
 ```json
 {
@@ -36,7 +36,9 @@ Informational only, the project uses the [config](https://www.npmjs.com/package/
 }
 ```
 
-All configuration can be overridden using environment variables, exported in advance, or on the command-line when the application is started. For example:
+Setting the `NODE_ENV` environment variables, either by exporting it in advance, or on the command-line when the application is started, dictates which config file is used. For example, using `NODE_ENV=production` specifies that the `production.json` will be used to source environment specific configuration.
+
+The code is written, such that all configuration in the configuration file can be overridden using environment variables, exported in advance, or on the command-line when the application is started. For example, to change the BFF listening port and service port to proxy request to, when starting the BFF, run:
 
 ```bash
 PORT=1234 API_PRT=5678 node app.js
