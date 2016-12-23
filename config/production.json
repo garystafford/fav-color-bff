@@ -2,7 +2,7 @@
   "port": "8081",
   "api": {
     "description": "Calls the internal Service ELB in the AWS Production environment",
-    "url": "api.favcolor.com",
+    "url": "api.fav-color.com",
     "port": "80"
   }
 }

@@ -1,18 +1,18 @@
 [![Build Status](https://travis-ci.org/garystafford/fav-color-bff.svg?branch=master)](https://travis-ci.org/garystafford/fav-color-bff)
 
-# Favorite Color Web Backend For Frontend (BFF)
+# Favorite Color Web Backend For Frontend (Web BFF)
 
 ## Introduction
 
-The Favorite Color Web Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier Angular-Node-Spring-MongoDB application platform. Currently, the Web BFF merely simulates a real BFF, and contains no actual business logic. Technically, it is a basic Node proxy server, built on [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy).
+The Favorite Color Web Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier, Angular-Node-Spring-MongoDB sample application platform. Currently, the Web BFF merely simulates a real BFF, and contains no actual business logic.
 
-The Web BFF proxies API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Service](https://github.com/garystafford/fav-color-service), a Spring Boot RESTful microservice. For example, a call to the `/choices` endpoint at `http://bff.favcolor.com:8081/choices`, from the web application, will be proxied through the BFF, to the private backend service endpoint `/choices` at `http://api.favcolor.com:8091/choices`.
+A simple Node-based reverse-proxy server built with [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy), the Web BFF proxies RESTful API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Spring Boot μService](https://github.com/garystafford/fav-color-service). For example, a call to the `/choices` endpoint at `https://bff.web.fav-color.com:8081/choices`, from the web application, will be proxied through the Web BFF, to the private backend μService endpoint `/choices` at `http://api.fav-color.com/choices`.
 
-The entire application is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind load balancers, while the service(s) and database(s) would sit in the private subnet, also behind a load balancer.
+The entire sample application platform is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind a load balancer, while the μService(s) and database(s) sit in the private subnet, also behind an internal load balancer.
 
 ## Quick Start for Local Development
 
-Once MongoDB, the Web Application, and the Service are all up and running locally, clone, build, test, and run the Web BFF, using the following commands:
+The Web BFF requires that the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb), [Favorite Color μService](https://github.com/garystafford/fav-color-service), and MongoDB, are all up and running locally. To clone, build, and run the Web BFF, using the following commands:
 
 ```bash
 git clone https://github.com/garystafford/fav-color-bff.git
