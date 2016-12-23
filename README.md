@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The Favorite Color Web Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier, Angular-Node-Spring-MongoDB sample application platform. Currently, the Web BFF merely simulates a real BFF, and contains no actual business logic. Normally, the Web BFF would be used to fine-tune the API payloads for the specific requirements of clients using web browsers, as opposed to Android, iOS, or other types of clients.
+The Favorite Color Web Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier, Angular-Node-Spring-MongoDB sample application platform. Currently, the Web BFF merely simulates a real BFF, and contains no actual business logic. Typically, a Web BFF would be used to fine-tune the API payloads to the specific requirements of clients using web browsers, as opposed to Android, iOS, or other types of clients.
 
 A simple Node-based reverse-proxy server, built with [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy), the Web BFF proxies RESTful API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Spring Boot μService](https://github.com/garystafford/fav-color-service). For example, a call to the `/choices` endpoint at `https://bff.web.fav-color.com:8081/choices`, from the web application, will be proxied through the Web BFF, to the private backend μService endpoint `/choices` at `http://api.fav-color.com/choices`.
 
