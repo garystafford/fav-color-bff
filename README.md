@@ -71,6 +71,8 @@ In addition, setting `NODE_ENV=production` means that the `production.json` will
 
 Remember, you can override the configuration using environment variables on the command-line, as shown above.
 
+![Platform Architecture](platform-architecture.png)
+
 ## Reference
 
 - [Splitting a gulpfile into multiple files](http://macr.ae/article/splitting-gulpfile-multiple-files.html)
