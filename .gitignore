@@ -4,3 +4,5 @@ public/components
 .sass-cache
 dist/
 .idea
+.DS_Store
+*.log

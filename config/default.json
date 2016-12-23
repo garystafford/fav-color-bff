@@ -2,7 +2,7 @@
   "port": "8081",
   "api": {
     "description": "Call the service directly in a local development environment",
-    "url": "http://localhost",
+    "url": "localhost",
     "port": "8091"
   }
 }

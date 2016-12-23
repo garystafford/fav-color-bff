@@ -12,7 +12,7 @@ var proxy = httpProxy.createProxyServer({});
 
 var server = http.createServer(function (req, res) {
 
-  console.log(req.url);
+  console.log('Requested URI: ' + req.url);
 
   proxy.web(req, res, {
     target: {
@@ -22,5 +22,7 @@ var server = http.createServer(function (req, res) {
   });
 });
 
-console.log('listening on port ' + port);
+console.log('Listening on port ' + port);
+console.log('API URL: ' + config.get('api.url'));
+console.log('API Port: ' + config.get('api.port'));
 server.listen(port);
