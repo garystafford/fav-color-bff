@@ -16,6 +16,6 @@ git config user.email "${COMMIT_AUTHOR_EMAIL}"
 
 ls -alh
 
-git add *.zip
+git add 'dist-bff-0.1.*.zip'
 git commit -m "Deploy Travis CI Build #${TRAVIS_BUILD_NUMBER} artifacts to GitHub"
 git push --force --quiet "https://${GH_TOKEN}@${GH_COLOR_ARTIFACT_REPO}" master:bff
