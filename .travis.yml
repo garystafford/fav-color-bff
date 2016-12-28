@@ -6,6 +6,7 @@ before_install:
 - sudo apt-get install -y zip
 install:
 - npm install
+- npm install -g gulp-cli
 script:
 - gulp dist
 - sh ./deploy_travisci.sh

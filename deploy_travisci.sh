@@ -10,6 +10,7 @@
 
 zip -r dist-bff-0.1.${TRAVIS_BUILD_NUMBER}.zip dist/
 
+rm -rf .git # remove current git config
 git init
 git config user.name "travis-ci"
 git config user.email "${COMMIT_AUTHOR_EMAIL}"
