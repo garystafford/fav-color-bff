@@ -45,7 +45,7 @@ Setting the `NODE_ENV` environment variables, either by exporting it in advance,
 The code is written, such that all configuration in the configuration file can be overridden using environment variables, exported in advance, or on the command-line when the application is started. For example, to change the BFF listening port and service port to proxy request to, when starting the BFF, run:
 
 ```bash
-PORT=1234 API_PORT=5678 node app.js
+WEB_BFF_PORT=1234 API_PORT=5678 node app.js
 ```
 
 ## Build Production Distribution

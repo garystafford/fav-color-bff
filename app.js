@@ -3,7 +3,7 @@
 var http = require('http');
 var httpProxy = require('http-proxy');
 var config = require('config');
-var port = process.env.PORT || config.get('port');
+var port = process.env.WEB_BFF_PORT || config.get('port');
 var proxy = httpProxy.createProxyServer({});
 
 // proxy.on('proxyReq', function (proxyReq, req, res, options) {

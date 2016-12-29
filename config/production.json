@@ -3,6 +3,6 @@
   "api": {
     "description": "Calls the internal Service ELB in the AWS Production environment",
     "url": "api.fav-color.com",
-    "port": "80"
+    "port": "91"
   }
 }
