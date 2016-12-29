@@ -8,7 +8,7 @@
 
 # set -x # setting will expose decrypted values in the output!
 
-zip -r dist-bff-0.1.${TRAVIS_BUILD_NUMBER}.zip dist/
+zip -r dist-bff-0.2.${TRAVIS_BUILD_NUMBER}.zip dist/
 
 rm -rf .git # remove current git config
 git init
