@@ -15,8 +15,6 @@ git init
 git config user.name "travis-ci"
 git config user.email "${COMMIT_AUTHOR_EMAIL}"
 
-ls -alh
-
 git add *.zip
 git commit -m "Deploy Travis CI Build #${TRAVIS_BUILD_NUMBER} artifacts to GitHub"
 git ls-tree --full-tree -r HEAD
