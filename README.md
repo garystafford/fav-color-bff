@@ -69,6 +69,17 @@ Using `NODE_ENV=production` means that only required npm packages in the `depend
 
 In addition, setting `NODE_ENV=production` means that the `production.json` will be used to source environment specific configuration. Note this file will need to be modified for your use; its values are specific to my AWS Production environment.
 
+```json
+{
+  "port": "8081",
+  "api": {
+    "description": "Calls the internal Service ELB in the AWS Production environment",
+    "url": "api.fav-color.com",
+    "port": "91"
+  }
+}
+```
+
 Remember, you can override the configuration using environment variables on the command-line, as shown above.
 
 ![Platform Architecture](platform-architecture.png)
