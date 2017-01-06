@@ -10,7 +10,7 @@ Currently, the web browser BFF merely simulates the functionality of a real BFF,
 
 The entire sample application platform is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind a load balancer, while the μService(s) and database(s) sit in the private subnet, also behind an internal load balancer.
 
-![Web UI](pics/fav-color-web-browser.png)
+![Mobile Web UI](pics/fav-color-mobile-web-browser.png)
 
 ## Quick Start for Local Development
 
