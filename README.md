@@ -4,15 +4,17 @@
 
 ## Introduction
 
-The Favorite Color Web Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier, Angular-Node-Spring-MongoDB sample application platform. Currently, the Web BFF merely simulates a real BFF, and contains no actual business logic. Typically, a Web BFF would be used to fine-tune the API payloads to the specific requirements of clients using web browsers, as opposed to Android, iOS, or other types of clients.
+The Favorite Color Web Browser Backend For Frontend ([BFF](http://samnewman.io/patterns/architectural/bff/)), is part of a multi-tier, Angular-Node-Spring-MongoDB sample application. A BFF is used to fine-tune the API payloads to the specific requirements of client's interface, in this case web browsers, as opposed to other interfaces, such as native Android, iOS, or embedded device.
 
-A simple Node-based reverse-proxy server, built with [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy), the Web BFF proxies RESTful API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Spring Boot μService](https://github.com/garystafford/fav-color-service). For example, a call to the `/choices` endpoint at `https://bff.web.fav-color.com:8081/choices`, from the web application, will be proxied through the Web BFF, to the private backend μService endpoint `/choices` at `http://api.fav-color.com/choices`.
+This web browser BFF merely simulates the functionality of a real BFF, and contains no user interface logic. Currently, the BFF is merely a Node.js-based reverse-proxy server, built with [Nodejitsu](https://nodejitsu.com/) [http-proxy](https://www.npmjs.com/package/http-proxy). The BFF proxies RESTful API calls from the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb) to the [Favorite Color Spring Boot μService](https://github.com/garystafford/fav-color-service). For example, a call to the `/choices` endpoint at `https://bff.web.fav-color.com:8081/choices`, from the web application, will be proxied through the BFF, to the private backend μService endpoint `/choices` at `http://api.fav-color.com/choices`.
 
 The entire sample application platform is designed to be provisioned and deployed to AWS, using HashiCorp Packer and Terraform. The web application and BFF are designed to sit in the public subnet behind a load balancer, while the μService(s) and database(s) sit in the private subnet, also behind an internal load balancer.
 
+![Web UI](pics/fav-color-web-browser.png)
+
 ## Quick Start for Local Development
 
-The Web BFF requires that the [Favorite Color Web Application](https://github.com/garystafford/fav-color-ngweb), [Favorite Color μService](https://github.com/garystafford/fav-color-service), and MongoDB, are all up and running locally. To clone, build, and run the Web BFF, using the following commands:
+The Web BFF requires that the [Favorite Color μService](https://github.com/garystafford/fav-color-service) and MongoDB are all up and running locally. To clone, build, and run the Web BFF, using the following commands:
 
 ```bash
 git clone https://github.com/garystafford/fav-color-bff.git
@@ -23,7 +25,7 @@ npm start
 
 The Web BFF should start successfully on the default host and port of `http://localhost:8081`, and be ready to take calls from the web application and proxy them to the service.
 
-![Local Architecture](local-bff.png)
+![Local Architecture](pics/local-fav-color-architecture.png)
 
 ## Configuration Management
 
@@ -82,7 +84,7 @@ In addition, setting `NODE_ENV=production` means that the `production.json` will
 
 Remember, you can override the configuration using environment variables on the command-line, as shown above.
 
-![Platform Architecture](platform-architecture.png)
+![Platform Architecture](pics/fav-color-aws-architecture.png)
 
 ## Reference
 
